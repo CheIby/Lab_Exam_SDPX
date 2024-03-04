@@ -6,7 +6,7 @@ pipeline {
   stages {
     stage('Clone') {
       steps {
-        git branch: 'main', url: 'https://github.com/CheIby/Lab_Exam_SDPX.git'
+        git branch: 'main', url: 'git@github.com:CheIby/Lab_Exam_SDPX.git'
         sh 'whoami'
       }
     }
@@ -27,7 +27,7 @@ pipeline {
         sh 'docker compose -f ./docker-compose.dev.yaml up -d --build'
         echo 'Cloning Robots'
         dir('./robot/') {
-          git branch: 'main', url: 'https://github.com/CheIby/Lab_Exam_SDPX.git'
+          git branch: 'main', url: 'git@github.com:CheIby/Lab_Exam_SDPX.git'
         }
         echo 'Runing Robot'
         sh 'cd ./robot && python3 -m robot ./test-api.robot'
