@@ -1,4 +1,4 @@
-const { plusHandler, server, primeNumber } = require("./index"); // Import your Express route handler function
+const { plusHandler, server, primeNumber, isHateFamus } = require("./index"); // Import your Express route handler function
 
 describe("Plus endpoint handler", () => {
   test("returns the sum of two numbers passed in parameters", () => {
@@ -69,6 +69,45 @@ describe("Plus endpoint handler", () => {
     primeNumber(req, res);
     expect(res.json).toHaveBeenCalledWith(true);
   });
+
+  test("is1honor 3.6",()=>{
+    const req = {
+      params: {
+        grade: 3.6,
+      },
+    };
+    const res = {
+      json: jest.fn(),
+    };
+    isHateFamus(req,res)
+    expect(res.json).toHaveBeenCalledWith(true);
+  })
+
+  test("is1honor 3.5",()=>{
+    const req = {
+      params: {
+        grade: 3.5,
+      },
+    };
+    const res = {
+      json: jest.fn(),
+    };
+    isHateFamus(req,res)
+    expect(res.json).toHaveBeenCalledWith(true);
+  })
+
+  test("is1honor 3.4",()=>{
+    const req = {
+      params: {
+        grade: 3.4,
+      },
+    };
+    const res = {
+      json: jest.fn(),
+    };
+    isHateFamus(req,res)
+    expect(res.json).toHaveBeenCalledWith(false);
+  })
 });
 afterAll((done) => {
   server.close(done);
